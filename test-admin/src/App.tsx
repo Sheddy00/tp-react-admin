@@ -6,14 +6,22 @@ import {
   ShowGuesser,
 } from "react-admin";
 import { dataProvider } from "./dataProvider";
+import { UserList } from "./user";
+import { PostCreate, PostEdit, PostList } from "./post"
 
 export const App = () => (
   <Admin dataProvider={dataProvider}>
     <Resource
       name="posts"
       list={ListGuesser}
-      edit={EditGuesser}
+      edit={PostEdit}
       show={ShowGuesser}
+    />
+    <Resource 
+      name="posts"
+      list={PostList}
+      //edit={PostEdit}
+      create={PostCreate}
     />
     <Resource
       name="comments"
@@ -21,5 +29,17 @@ export const App = () => (
       edit={EditGuesser}
       show={ShowGuesser}
     />
+    <Resource 
+      name="users"
+      list={UserList}
+      edit={EditGuesser}
+      show={ShowGuesser}
+    />
+    <Resource 
+      name="users" 
+      list={UserList} 
+      recordRepresentation="name" 
+      
+      />
   </Admin>
 );
